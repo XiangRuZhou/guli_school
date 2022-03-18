@@ -28,6 +28,7 @@ import java.util.Map;
 @Api("讲师管理")
 @RestController
 @RequestMapping("/eduservice/teacher")
+@CrossOrigin
 public class EduTeacherController {
 
     @Autowired
@@ -97,11 +98,10 @@ public class EduTeacherController {
     }
 
     @ApiOperation("根据ID查询")
-    @GetMapping("/getTeacger/{id}")
+    @GetMapping("/getTeacher/{id}")
     public ResultMsg getTeacher(
             @ApiParam(name = "id", value = "讲师ID", required = true)
             @PathVariable String id) {
-        int i = 10/0;
         EduTeacher eduTeacher = teacherService.getById(id);
         return ResultMsg.ok().data("teacher", eduTeacher);
     }
